@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: acme3
+  name: acme3
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: acme3
+  template:
+    metadata:
+      labels:
+        app: acme3
+    spec:
+      containers:
+        - resources:
+            limits: {}
+            requests: {}
+          name: acme3
+      image: vcp.ocir.io/idi1o0a010nx/helloworld:latest
+      ports:
+        - containerPort: 80
+      imagePullSecrets:
+      -name: ocirsecret
